@@ -18,10 +18,18 @@ namespace Sandbox
         {
             this.interestRate = interestRate;
             this.balance = 0.0;
+           
         }
 
         public void Deposit(double amount)
         {
+            balance = balance + amount;
+
+            if (amount < 0)
+            {
+                throw new NegativeAmountException();
+            }
+
             balance = balance + amount;
         }
 
@@ -33,6 +41,13 @@ namespace Sandbox
             }
 
             balance = balance - amount;
+        }
+        public void Illigal(double amount)
+        {
+            if (interestRate > 20)
+            {
+                throw new IllegalInterestRateException();
+            }
         }
 
         public double GetBalance()

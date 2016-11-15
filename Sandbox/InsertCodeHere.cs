@@ -13,10 +13,26 @@ namespace Sandbox
             BankAccount theAccount = new BankAccount(25.0);
 
             theAccount.Deposit(2000);
+            try
+            {
+                theAccount.Illigal(25.0);
+            }
+            catch (IllegalInterestRateException)
+            {
 
-
+                Console.WriteLine("STOP!! This is an illigal action!");
+            }
+            try
+            {
             // Should this be legal...?
             theAccount.Deposit(-1000);
+            }
+            catch (NegativeAmountException)
+            {
+
+                Console.WriteLine("STOP!! You can't deposit a negativ amount");
+            }
+           
 
             // Try to withdraw...
             try
